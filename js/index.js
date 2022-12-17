@@ -290,10 +290,11 @@ function loadDepartStation(projection, canvas, departCode) {
                 tooltip.style("opacity", 1)
             })
             .on("mousemove", function (event, d) {
+                // console.log(d.properties["gare_alias_libelle_noncontraint"])
                 tooltip
                     .html(d.properties["gare_alias_libelle_noncontraint"])
-                    .style("left", (parseInt(d3.select(this).attr("cx")) + document.getElementById("main").offsetLeft) + "px")
-                    .style("top", (parseInt(d3.select(this).attr("cy")) + document.getElementById("main").offsetTop) + "px")
+                    .style("left", event.x + 10 + "px")
+                    .style("top", event.y + "px")
             })
             .on("mouseout", function (event) {
                 d3.select(this).attr("fill", "DarkSlateGray")
@@ -361,8 +362,8 @@ function loadRegionStation(projection, canvas, list) {
                 tooltip
                     .html(d.properties["gare_alias_libelle_noncontraint"])
                     // .attr("transform", `translate(${event.x}, ${event.y})`)
-                    .style("left", (parseInt(d3.select(this).attr("cx")) + document.getElementById("main").offsetLeft) + "px")
-                    .style("top", (parseInt(d3.select(this).attr("cy")) + document.getElementById("main").offsetTop) + "px")
+                    .style("left", event.x + 10 + "px")
+                    .style("top", event.y + "px")
             })
             .on("mouseleave", function (event) {
                 d3.select(this).attr("fill", "DarkSlateGray")
